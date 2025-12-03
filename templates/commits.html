@@ -1,43 +1,52 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Commits</title>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <title>Graphique des commits (par minute)</title>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
   </head>
-
   <body>
     <h2>Graphique des commits (par minute)</h2>
-    <div id="chart_div"></div>
+    <div id="commits_chart"></div>
 
     <script>
-      google.charts.load('current', { packages: ['corechart'] });
-      google.charts.setOnLoadCallback(drawChart);
+      // Chargement de Google Charts
+      google.charts.load("current", { packages: ["corechart"] });
+      google.charts.setOnLoadCallback(loadData);
 
-      function drawChart() {
-        fetch('/commits_data/')
-          .then(response => response.json())
-          .then(data => {
-            var dataTable = new google.visualization.DataTable();
-            dataTable.addColumn('string', 'Date');
-            dataTable.addColumn('number', 'Minute');
-
-            data.results.forEach(entry => {
-              dataTable.addRow([
-                entry.date,
-                entry.minute
-              ]);
-            });
-
-            var options = {
-              title: 'Minutes des commits',
-              legend: { position: 'bottom' }
-            };
-
-            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-            chart.draw(dataTable, options);
+      // Récupère les données de l'API Flask /commits-data/
+      function loadData() {
+        fetch("/commits-data/")
+          .then((response) => response.json())
+          .then((data) => {
+            drawChart(data.results);
           });
+      }
+
+      // Dessine le graphique en colonnes
+      function drawChart(results) {
+        var dataTable = new google.visualization.DataTable();
+        dataTable.addColumn("string", "Minute");
+        dataTable.addColumn("number", "Commits");
+
+        results.forEach(function (entry) {
+          dataTable.addRow([entry.minute, entry.count]);
+        });
+
+        var options = {
+          title: "Commits par minute",
+          legend: { position: "none" },
+          hAxis: { title: "Minute" },
+          vAxis: { title: "Nombre de commits" },
+        };
+
+        var chart = new google.visualization.ColumnChart(
+          document.getElementById("commits_chart")
+        );
+        chart.draw(dataTable, options);
       }
     </script>
   </body>
 </html>
-
