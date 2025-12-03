@@ -38,8 +38,8 @@ def histogramme():
     return render_template("histogramme.html")
 
 @app.route("/contact/")
-def contact():
-    return render_template("contact.html")
+def MaPremiereAPI():
+    return "<h2>Ma page de contact</h2>"
 
 
   
