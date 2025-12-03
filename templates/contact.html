@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #d0c2ff, #f8e9ff);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        width: 350px;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #6a41cc;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+      }
+
+      input, textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+
+      textarea {
+        height: 100px;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #6a41cc;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #5933b5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Me Contacter</h2>
+
+      <label>Nom</label>
+      <input type="text" placeholder="Votre nom">
+
+      <label>Prénom</label>
+      <input type="text" placeholder="Votre prénom">
+
+      <label>Message</label>
+      <textarea placeholder="Votre message..."></textarea>
+
+      <button>Envoyer</button>
+    </div>
+  </body>
+</html>
