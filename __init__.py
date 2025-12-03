@@ -89,7 +89,7 @@ def commits():
 # API interne : récupération des commits GitHub
 @app.route("/api/commits/")
 def api_commits():
-    url = "https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits"
+    url = "https://api.github.com/repos/yousramahi11/5MCSI_Metriques/commits"
     response = urlopen(url)
     data = json.loads(response.read().decode("utf-8"))
 
